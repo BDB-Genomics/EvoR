@@ -1,0 +1,13 @@
+name: evo2 
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.14.4
+  - r-base=4.5.3
+  - r-curl=7.1.0
+  - r-httr2=1.2.2
+  - pip=26.0.1
+  - pip:
+    - evo2=0.3.0
