@@ -1,0 +1,20 @@
+citHeader("To cite package 'EvoR' in publications use:")
+
+citEntry(
+  author    = person("First", "Last", email = "first.last@example.com",
+                      role = c("aut", "cre")),
+  title     = "EvoR: What the Package Does",
+  year      = "2026",
+  note      = "Version 0.0.0.9000",
+  url       = "https://github.com/AncientHearings/EvoR",
+  textVersion = "First Last (2026). EvoR: What the Package Does.
+    Version 0.0.0.9000. https://github.com/AncientHearings/EvoR",
+  bibtex    = "@Manual{,
+    author = {First Last},
+    title = {EvoR: What the Package Does},
+    year = {2026},
+    note = {Version 0.0.0.9000},
+    url = {https://github.com/AncientHearings/EvoR}
+  }",
+  keywords  = "package"
+)
