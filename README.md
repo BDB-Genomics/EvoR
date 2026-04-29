@@ -2,4 +2,4 @@
 
 Evo 2 reference paper: https://www.nature.com/articles/s41586-026-10176-5
 
-In the Evo 2 Nature paper, the explicit count is 3 modalities: DNA, RNA, and protein, not 11 task/output modalities like in `AlphaGenomeR/R/`.
+In the Evo 2 Nature paper, the explicit count is 3 modalities: DNA, RNA, and protein.
