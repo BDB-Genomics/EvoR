@@ -1,1 +1,7 @@
 ^dev$
+^HANDOFF\.md$
+^\.env$
+^\.github$
+^implementation_plan\.md$
+^task\.md$
+^CITATION\.cff$
