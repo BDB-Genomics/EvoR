@@ -1,0 +1,82 @@
+---
+title: "Getting Started with EvoR: Genomic Foundation Models in R"
+author: "Himanshu"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started with EvoR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+**EvoR** provides a streamlined interface to the **Evo2** genomic foundation model. Evo2 is designed to understand the "biological grammar" of DNA, RNA, and proteins. 
+
+This vignette walks you through the three primary modalities of the package:
+1. **Generation**: Creating biological sequences.
+2. **Scoring**: Calculating log-likelihoods for Variant Effect Prediction (VEP).
+3. **Embeddings**: Extracting high-dimensional features for regulatory analysis.
+
+## Setup
+
+First, load the package and set your NVIDIA BioNeMo API key.
+
+```{r setup}
+library(EvoR)
+
+# You can set your API key as an environment variable
+# Sys.setenv(NVIDIA_API_KEY = "your_actual_api_key")
+```
+
+## 1. Sequence Generation and Scoring
+
+To analyze a sequence, use `evo2_query()`. By default, it returns both the generated sequence and the confidence scores (log-probabilities) for each nucleotide.
+
+```{r generation, eval = FALSE}
+# A sample DNA sequence
+my_seq <- "ATGCGTACGTAGCTAGCTAGCTAGCTAGC"
+
+# Query the model
+response <- evo2_query(my_seq, num_tokens = 10)
+
+# Extract the scores for Variant Effect Prediction (VEP)
+scores <- evo2_get_score(response)
+
+# Visualize the confidence scores for the first few bases
+head(scores)
+```
+
+## 2. Extracting Embeddings
+
+Embeddings are the model's internal representation of the DNA. These 4096-dimensional vectors are extremely useful for downstream machine learning tasks, such as predicting enhancer activity or chromatin state in Type 2 Diabetes (T2D) research.
+
+```{r embeddings, eval = FALSE}
+# Request a forward pass for the sequence
+emb_res <- evo2_query_embeddings(my_seq)
+
+# Extract the matrix (nucleotides x 4096 features)
+# Note: This requires the RcppCNPy package
+embeddings <- evo2_get_embeddings(emb_res)
+
+# Check the dimensions
+dim(embeddings)
+```
+
+## 3. T2D Research Workflow
+
+A typical research workflow using `EvoR` for Type 2 Diabetes epigenomics would involve:
+1. Identifying a GWAS risk variant.
+2. Creating a "Wild-type" and "Mutant" sequence.
+3. Comparing the **Scores** of both sequences to see if the mutation disrupts the model's expectation.
+4. Using the **Embeddings** to classify if the variant falls within a cryptic regulatory element.
+
+---
+For more details, visit the [BDB-Genomics GitHub](https://github.com/BDB-Genomics/EvoR).
