@@ -1,4 +1,5 @@
-# EvoR <img src="https://github.com/user-attachments/assets/91d270e6-345d-4a06-9811-59e9b7272486" align="right" width="200" />
+<img src="https://github.com/user-attachments/assets/91d270e6-345d-4a06-9811-59e9b7272486" align="right" width="200" />
+# EvoR 
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20113473.svg)](https://doi.org/10.5281/zenodo.20113473)
 
