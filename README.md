@@ -2,8 +2,8 @@
 <img width="1983" height="793" alt="ChatGPT Image May 11, 2026, 02_09_50 AM" src="https://github.com/user-attachments/assets/89224cb3-029a-4fed-8619-8482bf1604a6" />
 
 # EvoR 
-
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20113473.svg)](https://doi.org/10.5281/zenodo.20113473)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/BDB-Genomics/EvoR)
 
 **EvoR** is an R interface for the **Evo2 Genomic Foundation Model** (built by the Arc Institute). It allows researchers to leverage state-of-the-art biological AI for sequence generation, scoring, and embedding extraction directly within the R environment.
 
