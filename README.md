@@ -7,13 +7,13 @@
 
 **EvoR** is an R interface for the **Evo2 Genomic Foundation Model** (built by the Arc Institute). It allows researchers to leverage state-of-the-art biological AI for sequence generation, scoring, and embedding extraction directly within the R environment.
 
-## 🚀 Key Features
+## Key Features
 
 - **Generation:** Generate long DNA sequences (up to 1M bp) with biological context.
 - **Scoring (VEP):** Calculate log-likelihood scores to predict the effect of variants (e.g., in Type 2 Diabetes research).
 - **Embeddings:** Extract 4096-dimensional vectors for deep learning and regulatory pattern recognition.
 
-## 📦 Installation
+## Installation
 
 ```r
 # Install development version from GitHub
@@ -21,7 +21,7 @@
 devtools::install_github("BDB-Genomics/EvoR")
 ```
 
-## 🛠️ Quick Start
+## Quick Start
 
 ### 1. Set your API Key
 You need an NVIDIA BioNeMo API key to use EvoR.
@@ -50,7 +50,7 @@ embeddings <- evo2_get_embeddings(emb_response)
 dim(embeddings)
 ```
 
-## 📄 Reference
+## Reference
 Evo 2 Nature paper: [https://www.nature.com/articles/s41586-026-10176-5](https://www.nature.com/articles/s41586-026-10176-5)
 
 ---
