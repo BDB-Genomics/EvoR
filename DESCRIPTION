@@ -1,11 +1,31 @@
 Package: EvoR
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: An R Interface for the Evo2 Genomic Foundation Model
+Version: 0.1.0
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    person(given = "Himanshu", family = "Bhandary", role = c("aut", "cre"), email = "2032ushimanshu@gmail.com", comment = c(ORCID = "0009-0002-9859-3934", affiliation = "BDB-Genomics"))
+Description: Provides a lightweight R interface for the Evo2 genomic foundation 
+    model via the NVIDIA BioNeMo API. This package supports three core 
+    modalities: biological sequence generation, log-likelihood scoring for 
+    Variant Effect Prediction (VEP), and high-dimensional sequence embeddings 
+    for downstream regulatory pattern recognition. Designed for research in 
+    epigenomics and Type 2 Diabetes (T2D).
+License: Apache License 2.0 | file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.0.0
+RoxygenNote: 8.0.0
+Depends:
+    R (>= 4.1.0)
+Imports: 
+    httr2,
+    base64enc,
+    RcppCNPy
+Suggests: 
+    testthat (>= 3.0.0),
+    withr,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+URL: https://github.com/BDB-Genomics/EvoR
+BugReports: https://github.com/BDB-Genomics/EvoR/issues
+Config/testthat/edition: 3
+Config/roxygen2/version: 8.0.0

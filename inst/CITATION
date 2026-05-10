@@ -1,20 +1,21 @@
 citHeader("To cite package 'EvoR' in publications use:")
 
 citEntry(
-  author    = person("First", "Last", email = "first.last@example.com",
-                      role = c("aut", "cre")),
-  title     = "EvoR: What the Package Does",
+  entry     = "Manual",
+    author    = person(given = "Himanshu", family = "Bhandary", email = "2032ushimanshu@gmail.com",
+                      role = c("aut", "cre"), comment = c(ORCID = "0009-0002-9859-3934", affiliation = "BDB-Genomics")),
+  title     = "EvoR: An R Interface for the Evo2 Genomic Foundation Model",
   year      = "2026",
-  note      = "Version 0.0.0.9000",
-  url       = "https://github.com/AncientHearings/EvoR",
-  textVersion = "First Last (2026). EvoR: What the Package Does.
-    Version 0.0.0.9000. https://github.com/AncientHearings/EvoR",
+  note      = "Version 0.1.0",
+  url       = "https://github.com/BDB-Genomics/EvoR",
+  textVersion = "Bhandary H (2026). EvoR: An R Interface for the Evo2 Genomic Foundation Model.
+    Version 0.1.0. https://github.com/BDB-Genomics/EvoR",
   bibtex    = "@Manual{,
-    author = {First Last},
-    title = {EvoR: What the Package Does},
+    author = {Himanshu Bhandary},
+    title = {EvoR: An R Interface for the Evo2 Genomic Foundation Model},
     year = {2026},
-    note = {Version 0.0.0.9000},
-    url = {https://github.com/AncientHearings/EvoR}
+    note = {Version 0.1.0},
+    url = {https://github.com/BDB-Genomics/EvoR}
   }",
   keywords  = "package"
 )

@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+title: "EvoR: An R Interface for the Evo2 Genomic Foundation Model"
+message: "If you use this software, please cite it as below."
+authors:
+  - given-names: "Himanshu"
+    family-names: "Bhandary"
+    email: "2032ushimanshu@gmail.com"
+    orcid: "https://orcid.org/0009-0002-9859-3934"
+    affiliation: "BDB-Genomics"
+version: 0.1.0
+date-released: 2026-05-06
+doi: 10.5281/zenodo.20113473
+license: Apache-2.0
+url: https://github.com/BDB-Genomics/EvoR
+repository: https://github.com/BDB-Genomics/EvoR
+abstract: |
+  EvoR provides a lightweight R interface for the Evo2 genomic foundation
+  model via the NVIDIA BioNeMo API. Supports biological sequence generation,
+  log-likelihood scoring for Variant Effect Prediction (VEP), and high-dimensional
+  sequence embeddings for downstream regulatory pattern recognition.
+keywords:
+  - R
+  - bioinformatics
+  - genomics
+  - deep-learning
+  - evo2
+  - nvidia-bionemo
+  - variant-effect-prediction
+references:
+  - type: article
+    title: "Evo2: Advancing genomic foundation models"
+    journal: "Nature"
+    year: 2026
+    url: "https://www.nature.com/articles/s41586-026-10176-5"
