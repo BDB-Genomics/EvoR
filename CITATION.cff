@@ -7,7 +7,7 @@ authors:
     email: "2032ushimanshu@gmail.com"
     orcid: "https://orcid.org/0009-0002-9859-3934"
     affiliation: "BDB-Genomics"
-version: 0.1.0
+version: 0.99.0
 date-released: 2026-05-06
 doi: 10.5281/zenodo.20113473
 license: Apache-2.0
