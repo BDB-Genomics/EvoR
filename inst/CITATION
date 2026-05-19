@@ -9,7 +9,7 @@ citEntry(
   note      = "Version 0.99.0",
   url       = "https://github.com/BDB-Genomics/EvoR",
   textVersion = "Bhandary H (2026). EvoR: An R Interface for the Evo2 Genomic Foundation Model.
-    Version 0.1.0. https://github.com/BDB-Genomics/EvoR",
+    Version 0.99.0. https://github.com/BDB-Genomics/EvoR",
   bibtex    = "@Manual{,
     author = {Himanshu Bhandary},
     title = {EvoR: An R Interface for the Evo2 Genomic Foundation Model},
