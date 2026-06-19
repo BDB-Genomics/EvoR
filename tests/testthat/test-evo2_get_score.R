@@ -20,10 +20,11 @@ test_that("evo2_get_score returns sampled_probs from parsed response", {
   expect_true(all(scores >= 0 & scores <= 1))
 })
 
-test_that("evo2_get_score returns NULL when sampled_probs is missing", {
-  # Mock response without sampled_probs
+test_that("evo2_get_score returns NULL when sampled_probs is NULL", {
+  # Mock response with sampled_probs explicitly set to NULL
   mock_response <- list(
     sequence = "ACGTTTTT",
+    sampled_probs = NULL,
     elapsed_ms = 150
   )
   
