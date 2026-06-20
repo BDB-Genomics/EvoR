@@ -32,3 +32,16 @@ test_that("evo2_get_score errors when sampled_probs is missing", {
     "sampled_probs"
   )
 })
+
+test_that("evo2_get_score errors when sampled_probs is NULL", {
+  mock_response <- list(
+    sequence = "ACGTTTTT",
+    sampled_probs = NULL,
+    elapsed_ms = 150
+  )
+
+  expect_error(
+    evo2_get_score(mock_response),
+    "sampled_probs is NULL"
+  )
+})

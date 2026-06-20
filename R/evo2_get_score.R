@@ -10,8 +10,30 @@
 #' }
 
 evo2_get_score <- function(api_response) {
-      return(api_response$sampled_probs)
-}
 
+      #..................... INPUT VALIDATION .......................................
+      
+      if (!is.list(api_response) || !("sampled_probs" %in% names(api_response))) {
+          stop("'api_response' must be a list containing a 'sampled_probs' element.")
+      }
+      
+      if (is.null(api_response$sampled_probs)) {
+          stop("sampled_probs is NULL.")
+      }
+      
+      if (!is.numeric(api_response$sampled_probs) || length(api_response$sampled_probs) == 0 || anyNA(api_response$sampled_probs) || 
+      any(!is.finite(api_response$sampled_probs))) {
+          stop("sampled_probs must be numeric, non-empty, and must not contain NA, NaN, Inf, and -Inf")
+      }
+      
+      #.............................................................................
+      
+      
+      #..................... RETURN OUTPUT .........................................
+      
+      api_response$sampled_probs
+      
+      #.............................................................................
+}
 
 

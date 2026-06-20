@@ -9,6 +9,22 @@
 #'   embeddings <- evo2_get_embeddings(api_response)
 #' }
 evo2_get_embeddings <- function(api_response) {
+
+    #.......................... INPUT VALIDATION ........................................
+    
+    if (!is.list(api_response) || !("data" %in% names(api_response))) {
+        stop("'api_response' must be a list containing a 'data' element (base64-encoded).")
+    }
+
+    if (is.null(api_response$data) || !is.character(api_response$data) || !nzchar(api_response$data)) {
+        stop("data must non-empty, character strings.")
+    }
+    
+    
+    #....................................................................................
+    
+    #.......................... DECODE EMBEDDINGS .......................................  
+      
     decoded_bytes <- base64enc::base64decode(api_response$data)
 
     tmp <- tempfile(fileext = ".npy")
@@ -16,6 +32,16 @@ evo2_get_embeddings <- function(api_response) {
     writeBin(decoded_bytes, tmp)
 
     embeddings <- RcppCNPy::npyLoad(tmp, dotranspose = TRUE)
-
-    return(embeddings)
+    
+    #.....................................................................................
+    
+    #........................... RETURN OUTPUT ...........................................
+    
+    embeddings
+    
+    #.....................................................................................
 }
+
+
+
+

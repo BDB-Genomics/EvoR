@@ -15,10 +15,26 @@ evo2_query_embeddings <- function(sequence,
                                   api_url = NULL,
                                   api_key = NULL) {
 
+  #................ ........................................... INPUT VALIDATION .....................................................................
+
+  if (!is.character(sequence) || length(sequence) != 1 || !nzchar(sequence) || nchar(sequence) > 50000 || !grepl("^[ATGCUNRYKMSWBDHV]+$", sequence)) {
+    stop("'sequence' must be a character string of length 1, non-empty, max 50000 bp, and IUPAC-compliant.")
+  }
+
+  if (!is.character(layer) || !nzchar(layer)) {
+    stop("'layer' must be a non-empty character string.")
+  }
+
+  #...................................................................................................................................................
+
+  #............................................................ CORE LOGIC ...........................................................................
+
+  # Set the endpoint
   if (is.null(api_url)) {
     api_url <- "https://health.api.nvidia.com/v1/biology/arc/evo2-40b/forward"
   }
 
+  # Grab the API key
   if (is.null(api_key)) {
     api_key <- Sys.getenv("NVIDIA_API_KEY")
   }
@@ -27,6 +43,7 @@ evo2_query_embeddings <- function(sequence,
     stop("API key not found. Set NVIDIA_API_KEY environment variable or pass api_key parameter.")
   }
 
+  # Build request body
   body <- list(
     sequence = sequence,
     output_layers = list(layer)
@@ -54,6 +71,12 @@ evo2_query_embeddings <- function(sequence,
   result <- httr2::resp_body_json(response)
   result$elapsed_ms <- elapsed_ms
   result$target_layer <- layer
+  
+  #...................................................................................................................................................
+
+  #............................................................ RETURN OUTPUT ........................................................................
 
   return(result)
+
+  #...................................................................................................................................................
 }

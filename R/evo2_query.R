@@ -22,6 +22,44 @@ evo2_query <- function(sequence,
                        api_url = NULL,
                        api_key = NULL) {
 
+  #......................................................... INPUT VALIDATION ........................................................................
+  
+  # sequence 
+  if (!is.character(sequence) || length(sequence) != 1 || !nzchar(sequence) || nchar(sequence) > 50000 || !grepl("^[ATGCUNRYKMSWBDHV]+$", sequence)) {
+    stop("The sequence must be a character string of length 1, not greater than 50000 bp, non-empty, and IUPAC compliant.")
+  }
+  
+  # num_tokens
+  if (!is.numeric(num_tokens) || num_tokens != floor(num_tokens) || num_tokens < 1 || num_tokens > 100) {
+    stop("The num_tokens must be numeric and between 1 and 100")
+  }
+  
+  # temperature
+  if (!is.numeric(temperature) || temperature < 0 || temperature > 2) {
+    stop("The temperature must be numeric and between 0 and 2.")
+   }
+  
+  # top_k 
+  if (!is.numeric(top_k) || top_k != floor(top_k) || top_k < 1 || top_k > 100) {
+    stop("The top_k must be integer and between 1 and 100.")
+  }
+  
+  # top_p
+  if (!is.numeric(top_p) || top_p < 0 || top_p > 1) {
+    stop("The top_p must be numeric and between 0 and 1.")
+  }      
+  
+  # seed
+  if (!is.null(seed) && (!is.numeric(seed) || seed < 0 || seed != floor(seed))) {
+    stop("seed must be a non-negative integer.")
+  }
+
+#...................................................................................................................................................
+  
+#...................................................................................................................................................  
+
+#......................................................... CORE LOGIC ..............................................................................
+  
   # Set the endpoint
   if (is.null(api_url)) {
     api_url <- "https://health.api.nvidia.com/v1/biology/arc/evo2-40b/generate"
@@ -78,7 +116,12 @@ evo2_query <- function(sequence,
 
   # Add elapsed time to result
   result$elapsed_ms <- elapsed_ms
+  
+#...................................................................................................................................................
 
-  # Return the result
+#......................................................... RETURN OUTPUT ...........................................................................
+
   return(result)
+  
+#...................................................................................................................................................  
 }
