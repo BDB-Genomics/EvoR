@@ -1,8 +1,6 @@
 Package: EvoR
 Title: An R Interface for the Evo2 Genomic Foundation Model
 Version: 0.99.0
-Author: Himanshu Bhandary
-Maintainer: Himanshu Bhandary <2032ushimanshu@gmail.com>
 Authors@R: 
     person(given = "Himanshu", family = "Bhandary", role = c("aut", "cre"), email = "2032ushimanshu@gmail.com", comment = c(ORCID = "0009-0002-9859-3934", affiliation = "BDB-Genomics"))
 Description: Provides a lightweight R interface for the Evo2 genomic foundation 
@@ -17,7 +15,7 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 8.0.0
 Depends:
-    R (>= 4.1.0)
+    R (>= 4.6.0)
 Imports: 
     httr2,
     base64enc,

@@ -7,7 +7,7 @@
 #' @return A list containing the API response with embeddings and metadata
 #' @export
 #' @examples
-#' \dontrun{
+#' if (nzchar(Sys.getenv("NVIDIA_API_KEY"))) {
 #'   api_response <- evo2_query_embeddings("ACGT")
 #' }
 evo2_query_embeddings <- function(sequence,
@@ -17,14 +17,14 @@ evo2_query_embeddings <- function(sequence,
 
   #................ ........................................... INPUT VALIDATION .....................................................................
 
-  if (!is.character(sequence) || length(sequence) != 1 || !nzchar(sequence) || nchar(sequence) > 50000 || !grepl("^[ATGCUNRYKMSWBDHV]+$", sequence)) {
+  if (!is.character(sequence) || length(sequence) != 1 || is.na(sequence) || !nzchar(sequence) || nchar(sequence) > 50000 || !grepl("^[ATGCUNRYKMSWBDHV]+$", sequence)) {
     stop("'sequence' must be a character string of length 1, non-empty, max 50000 bp, and IUPAC-compliant.")
   }
 
-  if (!is.character(layer) || !nzchar(layer)) {
+  if (!is.character(layer) || length(layer) != 1 || is.na(layer) || !nzchar(layer) ) {
     stop("'layer' must be a non-empty character string.")
   }
-
+  
   #...................................................................................................................................................
 
   #............................................................ CORE LOGIC ...........................................................................
@@ -76,7 +76,7 @@ evo2_query_embeddings <- function(sequence,
 
   #............................................................ RETURN OUTPUT ........................................................................
 
-  return(result)
+  result
 
   #...................................................................................................................................................
 }

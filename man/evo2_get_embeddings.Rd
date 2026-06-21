@@ -16,7 +16,7 @@ A matrix of numerical embeddings (nucleotides x features)
 Extract and decode embeddings from Evo2 forward pass response
 }
 \examples{
-\dontrun{
+if (nzchar(Sys.getenv("NVIDIA_API_KEY"))) {
   api_response <- evo2_query_embeddings("ACGT")
   embeddings <- evo2_get_embeddings(api_response)
 }

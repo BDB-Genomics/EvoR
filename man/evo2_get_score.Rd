@@ -16,8 +16,6 @@ A numeric vector of probabilities (sampled_probs) for each generated base
 Extract confidence scores (probabilities) from Evo2 API response
 }
 \examples{
-\dontrun{
-  api_response <- evo2_query("ACGT")
-  scores <- evo2_get_score(api_response)
-}
+api_response <- list(sampled_probs = c(0.9, 0.8, 0.95))
+scores <- evo2_get_score(api_response)
 }

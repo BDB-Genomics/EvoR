@@ -34,3 +34,27 @@ test_that("evo2_get_embeddings extracts data key from response", {
   expect_equal(ncol(result), 2)
   expect_equal(result[1, 1], 0.1)
 })
+
+test_that("evo2_get_embeddings errors when data is missing or non-character", {
+  # 1. Missing data key
+  expect_error(evo2_get_embeddings(list(elapsed_ms = 150)), "containing a 'data' element")
+  
+  # 2. Non-character data
+  expect_error(evo2_get_embeddings(list(data = 123)), "non-empty character")
+})
+
+test_that("evo2_get_embeddings errors when data length is not 1", {
+  # 1. Empty vector (length 0)
+  expect_error(evo2_get_embeddings(list(data = character(0))), "non-empty character")
+  
+  # 2. Vector of length > 1
+  expect_error(evo2_get_embeddings(list(data = c("abc", "def"))), "non-empty character")
+})
+
+test_that("evo2_get_embeddings errors when data is NA or empty string", {
+  # 1. NA_character_
+  expect_error(evo2_get_embeddings(list(data = NA_character_)), "non-empty character")
+  
+  # 2. Empty string ""
+  expect_error(evo2_get_embeddings(list(data = "")), "non-empty character")
+})

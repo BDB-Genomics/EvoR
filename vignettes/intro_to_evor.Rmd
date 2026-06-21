@@ -9,7 +9,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
+```{r opts, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -54,6 +54,20 @@ scores <- evo2_get_score(response)
 head(scores)
 ```
 
+For demonstration without an API key, we can process a mock API response:
+
+```{r mock-scoring, eval = TRUE}
+# A mock API response
+mock_response <- list(
+  sequence = "ATGCGTACGTAGCTAGCTAGCTAGCTAGC",
+  sampled_probs = c(0.98, 0.95, 0.99, 0.88, 0.92, 0.94, 0.97, 0.91, 0.85, 0.99)
+)
+
+# Extract and view the scores
+scores <- evo2_get_score(mock_response)
+head(scores)
+```
+
 ## 2. Extracting Embeddings
 
 Embeddings are the model's internal representation of the DNA. These 4096-dimensional vectors are extremely useful for downstream machine learning tasks, such as predicting enhancer activity or chromatin state in Type 2 Diabetes (T2D) research.
@@ -70,6 +84,14 @@ embeddings <- evo2_get_embeddings(emb_res)
 dim(embeddings)
 ```
 
+For downstream analysis, we can work with the numerical embeddings matrix directly:
+
+```{r mock-embeddings, eval = TRUE}
+# Generate a mock matrix of embeddings (10 bases x 4096 dimensions)
+mock_embeddings <- matrix(runif(10 * 4096), nrow = 10, ncol = 4096)
+dim(mock_embeddings)
+```
+
 ## 3. T2D Research Workflow
 
 A typical research workflow using `EvoR` for Type 2 Diabetes epigenomics would involve:
@@ -80,3 +102,9 @@ A typical research workflow using `EvoR` for Type 2 Diabetes epigenomics would i
 
 ---
 For more details, visit the [BDB-Genomics GitHub](https://github.com/BDB-Genomics/EvoR).
+
+## Session Info
+
+```{r session-info, eval = TRUE}
+sessionInfo()
+```

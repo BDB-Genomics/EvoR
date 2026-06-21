@@ -39,7 +39,7 @@ A list containing the API response data and elapsed time in milliseconds
 Query the Evo2 API
 }
 \examples{
-\dontrun{
+if (nzchar(Sys.getenv("NVIDIA_API_KEY"))) {
   result <- evo2_query("ACGTACGTACGT", seed = 42)
 }
 }

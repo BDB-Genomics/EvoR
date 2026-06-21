@@ -10,7 +10,7 @@
 #' @return A list containing the API response data and elapsed time in milliseconds
 #' @export
 #' @examples
-#' \dontrun{
+#' if (nzchar(Sys.getenv("NVIDIA_API_KEY"))) {
 #'   result <- evo2_query("ACGTACGTACGT", seed = 42)
 #' }
 evo2_query <- function(sequence,
@@ -25,32 +25,32 @@ evo2_query <- function(sequence,
   #......................................................... INPUT VALIDATION ........................................................................
   
   # sequence 
-  if (!is.character(sequence) || length(sequence) != 1 || !nzchar(sequence) || nchar(sequence) > 50000 || !grepl("^[ATGCUNRYKMSWBDHV]+$", sequence)) {
+  if (!is.character(sequence) || length(sequence) != 1 || is.na(sequence) || !nzchar(sequence) || nchar(sequence) > 50000 || !grepl("^[ATGCUNRYKMSWBDHV]+$", sequence)) {
     stop("The sequence must be a character string of length 1, not greater than 50000 bp, non-empty, and IUPAC compliant.")
   }
   
   # num_tokens
-  if (!is.numeric(num_tokens) || num_tokens != floor(num_tokens) || num_tokens < 1 || num_tokens > 100) {
+  if (!is.numeric(num_tokens) || length(num_tokens) != 1 || !is.finite(num_tokens) || num_tokens != floor(num_tokens) || num_tokens < 1 || num_tokens > 100) {
     stop("The num_tokens must be numeric and between 1 and 100")
   }
   
   # temperature
-  if (!is.numeric(temperature) || temperature < 0 || temperature > 2) {
+  if (!is.numeric(temperature) || length(temperature) != 1 || !is.finite(temperature) || temperature < 0 || temperature > 2) {
     stop("The temperature must be numeric and between 0 and 2.")
    }
   
   # top_k 
-  if (!is.numeric(top_k) || top_k != floor(top_k) || top_k < 1 || top_k > 100) {
+  if (!is.numeric(top_k) || length(top_k) != 1 || !is.finite(top_k) || top_k != floor(top_k) || top_k < 1 || top_k > 100) {
     stop("The top_k must be integer and between 1 and 100.")
   }
   
   # top_p
-  if (!is.numeric(top_p) || top_p < 0 || top_p > 1) {
+  if (!is.numeric(top_p) || length(top_p) != 1 || !is.finite(top_p) || top_p < 0 || top_p > 1) {
     stop("The top_p must be numeric and between 0 and 1.")
   }      
   
   # seed
-  if (!is.null(seed) && (!is.numeric(seed) || seed < 0 || seed != floor(seed))) {
+  if (!is.null(seed) && (!is.numeric(seed) || length(seed) != 1 || !is.finite(seed) || seed < 0 || seed != floor(seed))) {
     stop("seed must be a non-negative integer.")
   }
 
@@ -121,7 +121,7 @@ evo2_query <- function(sequence,
 
 #......................................................... RETURN OUTPUT ...........................................................................
 
-  return(result)
+  result
   
 #...................................................................................................................................................  
 }

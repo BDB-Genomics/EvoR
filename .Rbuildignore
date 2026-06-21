@@ -5,3 +5,7 @@
 ^implementation_plan\.md$
 ^task\.md$
 ^CITATION\.cff$
+^\.Rlibs$
+^\.bigi_index\.json$
+^visualization\.html$
+^EvoR\.BiocCheck$

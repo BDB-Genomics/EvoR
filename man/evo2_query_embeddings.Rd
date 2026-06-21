@@ -27,7 +27,7 @@ A list containing the API response with embeddings and metadata
 Query the Evo2 API for sequence embeddings (forward pass)
 }
 \examples{
-\dontrun{
+if (nzchar(Sys.getenv("NVIDIA_API_KEY"))) {
   api_response <- evo2_query_embeddings("ACGT")
 }
 }

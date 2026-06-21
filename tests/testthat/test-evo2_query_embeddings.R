@@ -61,3 +61,24 @@ test_that("evo2_query_embeddings accepts custom layer", {
   
   expect_equal(result$target_layer, "decoder.final_norm")
 })
+
+test_that("evo2_query_embeddings validates sequence parameter", {
+  withr::local_envvar(NVIDIA_API_KEY = "fake-key-for-testing")
+  
+  # Type, length, NA, Empty, Non-IUPAC
+  expect_error(evo2_query_embeddings(123), "must be a character string")
+  expect_error(evo2_query_embeddings(c("ACGT", "TGCA")), "must be a character string")
+  expect_error(evo2_query_embeddings(NA_character_), "must be a character string")
+  expect_error(evo2_query_embeddings(""), "must be a character string")
+  expect_error(evo2_query_embeddings("ACGTX"), "must be a character string")
+})
+
+test_that("evo2_query_embeddings validates layer parameter", {
+  withr::local_envvar(NVIDIA_API_KEY = "fake-key-for-testing")
+  
+  # Type, length, NA, Empty
+  expect_error(evo2_query_embeddings("ACGT", layer = 123), "must be a non-empty character string")
+  expect_error(evo2_query_embeddings("ACGT", layer = c("layer1", "layer2")), "must be a non-empty character string")
+  expect_error(evo2_query_embeddings("ACGT", layer = NA_character_), "must be a non-empty character string")
+  expect_error(evo2_query_embeddings("ACGT", layer = ""), "must be a non-empty character string")
+})

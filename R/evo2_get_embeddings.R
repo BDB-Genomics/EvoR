@@ -4,7 +4,7 @@
 #' @return A matrix of numerical embeddings (nucleotides x features)
 #' @export
 #' @examples
-#' \dontrun{
+#' if (nzchar(Sys.getenv("NVIDIA_API_KEY"))) {
 #'   api_response <- evo2_query_embeddings("ACGT")
 #'   embeddings <- evo2_get_embeddings(api_response)
 #' }
@@ -16,8 +16,8 @@ evo2_get_embeddings <- function(api_response) {
         stop("'api_response' must be a list containing a 'data' element (base64-encoded).")
     }
 
-    if (is.null(api_response$data) || !is.character(api_response$data) || !nzchar(api_response$data)) {
-        stop("data must non-empty, character strings.")
+    if (is.null(api_response$data) || !is.character(api_response$data) || length(api_response$data) != 1 || is.na(api_response$data) || !nzchar(api_response$data)) {
+        stop("data must non-empty character strings.")
     }
     
     

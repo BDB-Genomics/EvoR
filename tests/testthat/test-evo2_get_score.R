@@ -45,3 +45,73 @@ test_that("evo2_get_score errors when sampled_probs is NULL", {
     "sampled_probs is NULL"
   )
 })
+
+test_that("evo2_get_score errors when sampled_probs is non-numeric", {
+  mock_response <- list(
+    sequence = "ACGTTTTT", 
+    sampled_probs = c("a", "b"),
+    elapsed_ms = 150
+  )
+  
+  expect_error(
+    evo2_get_score(mock_response), 
+    "must be numeric"
+    )
+})   
+
+test_that("evo2_get_score errors when sampled_probs contains NA or NaN", {
+  mock_response_na <- list(
+    sequence = "ACGTTTTT", 
+    sampled_probs = c(0.9, NA, 0.8), 
+    elapsed_ms = 150
+  )
+    
+  mock_response_nan <- list(
+    sequence = "AGTTTTT", 
+    sampled_probs = c(0.9, NaN, 0.9), 
+    elapsed_ms = 150
+  )
+    
+  expect_error(
+    evo2_get_score(mock_response_na), 
+    "must be numeric"
+  )   
+  expect_error(
+    evo2_get_score(mock_response_nan), 
+    "must be numeric"
+  )   
+})
+
+test_that("evo2_get_score errors when sampled_probs is empty", {
+  mock_response <- list(
+    sequence = "ACGTTTTT",
+    sampled_probs = numeric(0),
+    elapsed_ms = 150
+  )
+  expect_error(
+    evo2_get_score(mock_response),
+    "must be numeric"
+  )
+})
+
+test_that("evo2_get_score errors when sampled_probs contains Inf or -Inf", {
+  mock_response_inf <- list(
+    sequence = "ACGTTTTT",
+    sampled_probs = c(0.9, Inf, 0.8),
+    elapsed_ms = 150
+  )
+  mock_response_neginf <- list(
+    sequence = "ACGTTTTT",
+    sampled_probs = c(0.9, -Inf, 0.8),
+    elapsed_ms = 150
+  )
+  expect_error(
+    evo2_get_score(mock_response_inf),
+    "must be numeric"
+  )
+  expect_error(
+    evo2_get_score(mock_response_neginf),
+    "must be numeric"
+  )
+})
+
