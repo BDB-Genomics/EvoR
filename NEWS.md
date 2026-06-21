@@ -5,6 +5,19 @@ All notable changes to the EvoR package are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this package adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0] - 2026-06-22
+
+### Fixed
+- Standardized `DESCRIPTION` Authors@R structure to resolve BiocCheck conflicts.
+- Configured `.Rbuildignore` to properly ignore local caches and temporary build artifacts (`.Rlibs`, `.bigi_index.json`, `visualization.html`, `EvoR.BiocCheck`).
+- Corrected vignette style issues by labeling all code chunks, evaluating package usage using mock data, and appending a `sessionInfo()` check to `vignettes/intro_to_evor.Rmd`.
+
+### Changed
+- Replaced non-runnable examples with conditional runnable blocks checking `NVIDIA_API_KEY`, satisfying BiocCheck's 80% runnable examples requirement.
+
+### Docs
+- Refactored `README.md` to clarify APIs and add a unified quickstart workflow script.
+
 ## [0.99.0] - 2026-05-19
 
 ### Fixed

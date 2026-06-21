@@ -6,15 +6,15 @@ citEntry(
                       role = c("aut", "cre"), comment = c(ORCID = "0009-0002-9859-3934", affiliation = "BDB-Genomics")),
   title     = "EvoR: An R Interface for the Evo2 Genomic Foundation Model",
   year      = "2026",
-  note      = "Version 0.99.0",
+  note      = "Version 1.0.0",
   url       = "https://github.com/BDB-Genomics/EvoR",
   textVersion = "Bhandary H (2026). EvoR: An R Interface for the Evo2 Genomic Foundation Model.
-    Version 0.99.0. https://github.com/BDB-Genomics/EvoR",
+    Version 1.0.0. https://github.com/BDB-Genomics/EvoR",
   bibtex    = "@Manual{,
     author = {Himanshu Bhandary},
     title = {EvoR: An R Interface for the Evo2 Genomic Foundation Model},
     year = {2026},
-    note = {Version 0.99.0},
+    note = {Version 1.0.0},
     url = {https://github.com/BDB-Genomics/EvoR}
   }",
   keywords  = "package"
